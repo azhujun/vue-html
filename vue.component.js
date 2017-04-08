@@ -30,7 +30,6 @@ Vue.component('child', {
 Vue.directive('demo', {
     bind: function (el, binding, vnode) {
         var s = JSON.stringify
-        console.log(111);
         el.innerHTML =
             'name: ' + s(binding.name) + '<br>' +
             'value: ' + s(binding.value) + '<br>' +
