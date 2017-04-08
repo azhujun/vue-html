@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="vue.js"></script>
+    <script src="vue.interfase.js"></script>
+    <script src="vue.component.js"></script>
+    <script src="vue.filter.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <transition name="slide-fade">
+            <p v-if="ajax">{{ ajax }}</p>
+        </transition>
+        <p v-if="ajax.name">{{ ajax.name | tocn }}</p>
+        <input type="text" v-model="total">
+        <button-counter v-on:increment="incrementTotal()"></button-counter>
+        <button @click="incrementTotal()">btn</button>
+        <transition name="slide-fade">
+        <alert v-if="alertBtn.show" :data="alertBtn"></alert>
+        </transition>
+    </div>
+    <template id="alert-template">
+        <div :class="data.class">
+            <p v-text="data.title" class="title"></p>
+            <p v-text="data.describe" class="describe"></p>
+            <div class="btn-box">
+                <button v-if="data.determine" class="btn" :class="data.determine.class" @click="determine">{{ data.determine.text | showText('determine') }}</button>
+                <button v-if="data.cancel" class="btn" :class="data.cancel.class" @click="cancel">{{ data.cancel.text | showText('cancel') }}</button>
+            </div>
+        </div>
+    </template>
+    <script src="index.js"></script>
+</body>
+</html>

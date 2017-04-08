@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="vue.min.js"></script>
+    <script src="vue.component.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">btn</button>
+        <transition name="slide-fade">
+            <p class="this" v-if="show">hello</p>
+        </transition>
+        <child v-on:sea="fa" v-model="something"></child>
+        <ul>
+            <li v-for="item in list" v-text="item.index"></li>
+        </ul>
+        <input type="text" v-model="userinfo.name">
+        <select name="select">
+            <option value="1">1</option>
+        </select>
+        <input type="text" v-model="userinfo.name1">
+        <input type="radio" name="frie" value="苹果" v-model="userinfo.name2">
+        <input type="radio" name="frie" value="香蕉" v-model="userinfo.name3">
+        <input type="checkbox" v-model="userinfo.name4">
+        <button @click="form()">btn</button>
+       <div v-if="show">
+            <div v-demo:sea="something">
+                <p>class</p>
+            </div>
+       </div>
+    </div>
+
+    <template id="child-template">
+        <div>
+            <input v-bind:value="value" v-on:input="value = $event.target.value">
+            <button @click="t1">Dispatch Event</button>
+        </div>
+    </template>
+    <script src="index.js"></script>
+</body>
+</html>
